@@ -12,5 +12,9 @@
 
 ## Tela Principal
 
-
 ![Captura de tela 2024-01-29 201342](https://github.com/Gabriel-Davila-dc/Projeto-Banco-para-Dinheiro-Jframe/assets/158082235/03d7bb99-97b2-41cd-aad8-4640bb73e612)
+
+
+## Tela de Depositar
+
+![Captura de tela 2024-01-29 201400](https://github.com/Gabriel-Davila-dc/Projeto-Banco-para-Dinheiro-Jframe/assets/158082235/c067a5ff-92a3-442c-ae16-67e86c1e3b9c)
