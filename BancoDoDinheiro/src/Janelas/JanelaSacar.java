@@ -85,6 +85,7 @@ public class JanelaSacar extends javax.swing.JFrame {
         });
         jPanel3.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, -1));
 
+        txtValor.setBackground(new java.awt.Color(60, 68, 67));
         txtValor.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         txtValor.setForeground(new java.awt.Color(255, 255, 255));
         txtValor.addActionListener(new java.awt.event.ActionListener() {
