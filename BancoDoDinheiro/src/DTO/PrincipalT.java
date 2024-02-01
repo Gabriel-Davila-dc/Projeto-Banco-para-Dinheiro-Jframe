@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author gabri
  */
-public class Principal {
+public class PrincipalT {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         Scanner entradaop = new Scanner(System.in);

@@ -29,7 +29,7 @@ public class UsuarioDAO {
 
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, objContaBancaria.getNomeCliente());
-            pstm.setString(2, objContaBancaria.getSenhaCliente());
+            pstm.setString(2, objContaBancaria.getSenhaCliente());           
             ResultSet rs = pstm.executeQuery();
             return rs;
 
@@ -40,7 +40,7 @@ public class UsuarioDAO {
     }
 
     public void cadastrarUsuario(ContaBancaria objContaBancaria) {
-        String sql = "insert into usuario (nome, senha) values (?,?)";
+        String sql = "insert into usuario (nome, senha, saldo) values (?,?,?)";
 
         conn = new ConexaoDAO().conectaBD();
 
@@ -49,7 +49,7 @@ public class UsuarioDAO {
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, objContaBancaria.getNomeCliente());
             pstm.setString(2, objContaBancaria.getSenhaCliente());
-
+            pstm.setDouble(3, objContaBancaria.getSaldo());
             pstm.execute();
             pstm.close();;
 

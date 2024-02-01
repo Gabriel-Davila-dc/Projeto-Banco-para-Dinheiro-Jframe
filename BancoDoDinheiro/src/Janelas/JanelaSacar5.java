@@ -10,12 +10,12 @@ import Janelas.Util.LimitaCaracteres;
  *
  * @author gabri
  */
-public class JanelaSacar extends javax.swing.JFrame {
+public class JanelaSacar5 extends javax.swing.JFrame {
 
     /**
      * Creates new form Janela2
      */
-    public JanelaSacar() {
+    public JanelaSacar5() {
         initComponents();
         txtValor.setDocument(new LimitaCaracteres(17, LimitaCaracteres.TipoEntrada.NUMERODECIMAL));
 
@@ -112,15 +112,12 @@ public class JanelaSacar extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
-        
-        
-        dispose();
+         System.exit(0);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
-        Janela2 objJanela2 = new Janela2();
-            objJanela2.setVisible(true);
+        Principal.paginaAberta(2);
             dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
@@ -153,14 +150,18 @@ public class JanelaSacar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JanelaSacar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaSacar5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JanelaSacar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaSacar5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JanelaSacar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaSacar5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JanelaSacar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaSacar5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -169,7 +170,7 @@ public class JanelaSacar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JanelaSacar().setVisible(true);
+                new JanelaSacar5().setVisible(true);
             }
         });
     }

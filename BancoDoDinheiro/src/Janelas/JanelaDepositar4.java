@@ -11,12 +11,12 @@ import Janelas.Util.LimitaCaracteres;
  *
  * @author gabri
  */
-public class JanelaDepositar extends javax.swing.JFrame {
+public class JanelaDepositar4 extends javax.swing.JFrame {
 
     /**
      * Creates new form Janela2
      */
-    public JanelaDepositar() {
+    public JanelaDepositar4() {
         initComponents();
         
         txtValor.setDocument(new LimitaCaracteres(17, LimitaCaracteres.TipoEntrada.NUMERODECIMAL));
@@ -35,10 +35,10 @@ public class JanelaDepositar extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtValor = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -56,16 +56,16 @@ public class JanelaDepositar extends javax.swing.JFrame {
         jButton1.setText("Depositar");
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 289, 352, -1));
 
-        jButton4.setBackground(new java.awt.Color(41, 41, 41));
-        jButton4.setForeground(new java.awt.Color(204, 204, 204));
-        jButton4.setText("X");
-        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnSair.setBackground(new java.awt.Color(41, 41, 41));
+        btnSair.setForeground(new java.awt.Color(204, 204, 204));
+        btnSair.setText("X");
+        btnSair.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnSairActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 40, -1));
+        jPanel3.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 40, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -77,16 +77,16 @@ public class JanelaDepositar extends javax.swing.JFrame {
         txtValor.setForeground(new java.awt.Color(255, 255, 255));
         jPanel3.add(txtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 169, 330, 60));
 
-        jButton2.setBackground(new java.awt.Color(41, 41, 41));
-        jButton2.setForeground(new java.awt.Color(204, 204, 204));
-        jButton2.setText("<-- Voltar");
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar.setBackground(new java.awt.Color(41, 41, 41));
+        btnVoltar.setForeground(new java.awt.Color(204, 204, 204));
+        btnVoltar.setText("<-- Voltar");
+        btnVoltar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnVoltarActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, -1));
+        jPanel3.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -103,19 +103,16 @@ public class JanelaDepositar extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
-        
-        
-        dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+         System.exit(0);
+    }//GEN-LAST:event_btnSairActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
-        Janela2 objJanela2 = new Janela2();
-            objJanela2.setVisible(true);
+        Principal.paginaAberta(2);
             dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,29 +131,31 @@ public class JanelaDepositar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JanelaDepositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaDepositar4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JanelaDepositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaDepositar4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JanelaDepositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaDepositar4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JanelaDepositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaDepositar4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JanelaDepositar().setVisible(true);
+                new JanelaDepositar4().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

@@ -11,12 +11,12 @@ import DTO.ContaBancaria;
  *
  * @author gabri
  */
-public class JanelaCadastrar extends javax.swing.JFrame {
+public class JanelaCadastrar3 extends javax.swing.JFrame {
 
     /**
      * Creates new form JanelaCadastrar
      */
-    public JanelaCadastrar() {
+    public JanelaCadastrar3() {
         initComponents();
         PainelCadastroInvalido.setVisible(false);
     }
@@ -40,8 +40,8 @@ public class JanelaCadastrar extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         PainelCadastroInvalido = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        btnSair = new javax.swing.JButton();
-        btnVoltar = new javax.swing.JButton();
+        Sair = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,8 +63,9 @@ public class JanelaCadastrar extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 70, -1));
         jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 220, 30));
 
-        btnCadastrar.setBackground(new java.awt.Color(140, 140, 140));
-        btnCadastrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnCadastrar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCadastrar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,25 +94,27 @@ public class JanelaCadastrar extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 340, 440));
 
-        btnSair.setBackground(new java.awt.Color(50, 50, 50));
-        btnSair.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
-        btnSair.setText("X");
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
+        Sair.setBackground(new java.awt.Color(51, 51, 51));
+        Sair.setForeground(new java.awt.Color(204, 204, 204));
+        Sair.setText("X");
+        Sair.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
+                SairActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 40, 20));
+        getContentPane().add(Sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 30, -1));
 
-        btnVoltar.setBackground(new java.awt.Color(51, 51, 51));
-        btnVoltar.setText("<-- Voltar");
-        btnVoltar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setBackground(new java.awt.Color(51, 51, 51));
+        jButton4.setForeground(new java.awt.Color(204, 204, 204));
+        jButton4.setText("<-- Voltar");
+        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/azulFolha.jpg"))); // NOI18N
         jLabel3.setText("jLabel1");
@@ -146,17 +149,17 @@ public class JanelaCadastrar extends javax.swing.JFrame {
         else{PainelCadastroInvalido.setVisible(true);}
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+    private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
         // TODO add your handling code here:
-        dispose();;
-    }//GEN-LAST:event_btnSairActionPerformed
+         System.exit(0);
+    }//GEN-LAST:event_SairActionPerformed
 
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         Janela1 objJanela1 = new Janela1();
         objJanela1.setVisible(true);
         dispose();
-    }//GEN-LAST:event_btnVoltarActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,30 +178,32 @@ public class JanelaCadastrar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JanelaCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaCadastrar3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JanelaCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaCadastrar3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JanelaCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaCadastrar3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JanelaCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaCadastrar3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JanelaCadastrar().setVisible(true);
+                new JanelaCadastrar3().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PainelCadastroInvalido;
+    private javax.swing.JButton Sair;
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnVoltar;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -41,8 +41,8 @@ public class Janela2 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblValor = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
+        Sair = new javax.swing.JButton();
+        btnSairDaConta = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnDepositar = new javax.swing.JButton();
         btnSacar = new javax.swing.JButton();
@@ -66,23 +66,23 @@ public class Janela2 extends javax.swing.JFrame {
         lblValor.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         lblValor.setText("0,00");
 
-        jButton4.setBackground(new java.awt.Color(51, 51, 51));
-        jButton4.setForeground(new java.awt.Color(204, 204, 204));
-        jButton4.setText("X");
-        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Sair.setBackground(new java.awt.Color(51, 51, 51));
+        Sair.setForeground(new java.awt.Color(204, 204, 204));
+        Sair.setText("X");
+        Sair.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                SairActionPerformed(evt);
             }
         });
 
-        btnSair.setBackground(new java.awt.Color(51, 51, 51));
-        btnSair.setForeground(new java.awt.Color(204, 204, 204));
-        btnSair.setText("Sair");
-        btnSair.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
+        btnSairDaConta.setBackground(new java.awt.Color(51, 51, 51));
+        btnSairDaConta.setForeground(new java.awt.Color(204, 204, 204));
+        btnSairDaConta.setText("Sair");
+        btnSairDaConta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSairDaConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
+                btnSairDaContaActionPerformed(evt);
             }
         });
 
@@ -92,12 +92,12 @@ public class Janela2 extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(11, Short.MAX_VALUE)
-                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSairDaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Sair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -112,7 +112,7 @@ public class Janela2 extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4)
+                        .addComponent(Sair)
                         .addGap(2, 2, 2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,7 +121,7 @@ public class Janela2 extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnSair)
+                .addComponent(btnSairDaConta)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -130,7 +130,7 @@ public class Janela2 extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
         jPanel3.setForeground(new java.awt.Color(102, 102, 102));
 
-        btnDepositar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnDepositar.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         btnDepositar.setText("Depositar");
         btnDepositar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +138,7 @@ public class Janela2 extends javax.swing.JFrame {
             }
         });
 
-        btnSacar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnSacar.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         btnSacar.setText("Sacar");
         btnSacar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +146,7 @@ public class Janela2 extends javax.swing.JFrame {
             }
         });
 
-        btnVerExtrato.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnVerExtrato.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         btnVerExtrato.setText("Ver Extrato");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -165,12 +165,12 @@ public class Janela2 extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(38, Short.MAX_VALUE)
-                .addComponent(btnDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(btnSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(btnVerExtrato, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addComponent(btnDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnVerExtrato, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 620, 320));
@@ -183,32 +183,29 @@ public class Janela2 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
         // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_SairActionPerformed
 
     private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
         // TODO add your handling code here:
-        
-        JanelaDepositar objJanelaDepositar = new JanelaDepositar();
-            objJanelaDepositar.setVisible(true);
-            dispose();
+        Principal.paginaAberta(4);
+        dispose();
+            
     }//GEN-LAST:event_btnDepositarActionPerformed
 
     private void btnSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarActionPerformed
         // TODO add your handling code here:
-       JanelaSacar objJanelaSacar = new JanelaSacar();
-            objJanelaSacar.setVisible(true);
-            dispose();
+        Principal.paginaAberta(5);
+        dispose();
     }//GEN-LAST:event_btnSacarActionPerformed
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+    private void btnSairDaContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairDaContaActionPerformed
         // TODO add your handling code here:
-        Janela1 objJanela1 = new Janela1();
-        objJanela1.setVisible(true);
+        Principal.paginaAberta(1);
         dispose();
-    }//GEN-LAST:event_btnSairActionPerformed
+    }//GEN-LAST:event_btnSairDaContaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,11 +243,11 @@ public class Janela2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Sair;
     private javax.swing.JButton btnDepositar;
     private javax.swing.JButton btnSacar;
-    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSairDaConta;
     private javax.swing.JButton btnVerExtrato;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
