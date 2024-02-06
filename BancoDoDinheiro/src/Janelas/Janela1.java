@@ -202,10 +202,10 @@ public class Janela1 extends javax.swing.JFrame {
 
         boolean logar = Principal.logar(usuarioT, senhaT);
              
-        if(logar = true)
+        if(logar == true)
         {
             Principal.paginaAberta(2);
-            
+           
                  
         }else
         {

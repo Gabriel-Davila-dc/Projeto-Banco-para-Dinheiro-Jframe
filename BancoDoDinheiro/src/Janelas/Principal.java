@@ -110,17 +110,14 @@ public class Principal {
        
          UsuarioDAO objUsuarioDAO = new UsuarioDAO();
         
-        ResultSet resultadoLogin = objUsuarioDAO.autenticacaoUsuario(objContaBancaria);
-        
-        if(resultadoLogin.next())
-        {
-        
+        ResultSet rs = objUsuarioDAO.autenticacaoUsuario(objContaBancaria);
+       
+        if(rs.next())
+        {           
+        return true;       
         }   
-        
-        
-
         } catch (SQLException e) {
-            JOptionPane.showInternalMessageDialog(null, "JANELA1" + e);
+            JOptionPane.showInternalMessageDialog(null, "JanelaPrincipalLogar" + e);
         }
          return false;
     }
