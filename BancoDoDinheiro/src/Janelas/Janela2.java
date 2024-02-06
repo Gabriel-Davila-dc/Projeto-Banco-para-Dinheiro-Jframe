@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Janelas;
 
 import DTO.ContaBancaria;
@@ -18,6 +15,7 @@ public class Janela2 extends javax.swing.JFrame {
      */
     public Janela2() {
         initComponents();
+       
         }
     
     public void ExportarTexto(ContaBancaria objContaBancaria)
@@ -253,6 +251,6 @@ public class Janela2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lblValor;
+    public static javax.swing.JLabel lblValor;
     // End of variables declaration//GEN-END:variables
 }
