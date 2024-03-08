@@ -13,17 +13,19 @@ import Janelas.Util.LimitaCaracteres;
  */
 public class JanelaDepositar4 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Janela2
-     */
+    String idSupremoD;
+    
     public JanelaDepositar4() {
         initComponents();
+        
         
         txtValor.setDocument(new LimitaCaracteres(17, LimitaCaracteres.TipoEntrada.NUMERODECIMAL));
 
        
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,7 +112,9 @@ public class JanelaDepositar4 extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
-        Principal.paginaAberta(2);
+         Janela2 objJanela2 = new Janela2();
+            objJanela2.setVisible(true);
+            objJanela2.idSupremo = idSupremoD;
             dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 

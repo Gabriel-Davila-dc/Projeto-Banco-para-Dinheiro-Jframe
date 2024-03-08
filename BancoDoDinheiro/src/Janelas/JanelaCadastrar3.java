@@ -4,8 +4,11 @@
  */
 package Janelas;
 
-import DAO.UsuarioDAO;
-import DTO.ContaBancaria;
+import java.sql.*;
+import DAO.ConexaoDAO;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,12 +16,46 @@ import DTO.ContaBancaria;
  */
 public class JanelaCadastrar3 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JanelaCadastrar
-     */
+    Connection conexao = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+
     public JanelaCadastrar3() {
         initComponents();
         PainelCadastroInvalido.setVisible(false);
+
+        conexao = ConexaoDAO.conector();
+    }
+
+    public void Cadastrar() {
+        String Sql = "select * from usuario where nome =?";
+        try {
+            pst = conexao.prepareStatement(Sql);
+            pst.setString(1, txtUsuario.getText());
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                PainelCadastroInvalido.setVisible(true);
+            } else {
+
+                String sql2 = "insert into usuario(nome, senha) values (?,?)";
+                try {
+                    pst = conexao.prepareStatement(sql2);
+                    pst.setString(1, txtUsuario.getText());
+                    pst.setString(2, txtSenha.getText());
+                    if (txtUsuario.getText().isEmpty() || txtSenha.getText().isEmpty()) {
+                        PainelCadastroInvalido.setVisible(true);
+                    } else {
+                        pst.executeUpdate();
+                        JanelaLogin1 objJanelalogin1 = new JanelaLogin1();
+                        objJanelalogin1.setVisible(true);
+                    }
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Adicionando" + e);
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "JaExiste" + ex);
+        }
     }
 
     /**
@@ -125,38 +162,17 @@ public class JanelaCadastrar3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        // TODO add your handling code here:
-        String nome;
-        String senha;
- 
-        
-        nome = txtUsuario.getText();
-        senha = txtSenha.getText();
-        
-        if(nome != null && senha != null){
-        
-        ContaBancaria objcontaBancaria = new ContaBancaria();
-        objcontaBancaria.setNomeCliente(nome);
-        objcontaBancaria.setSenhaCliente(senha);
-        
-        UsuarioDAO objusuarioDAO = new UsuarioDAO();
-        objusuarioDAO.cadastrarUsuario(objcontaBancaria);
-        
-        Janela1 objJanela1 = new Janela1();
-        objJanela1.setVisible(true);
-        dispose();
-        }
-        else{PainelCadastroInvalido.setVisible(true);}
+        Cadastrar();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
         // TODO add your handling code here:
-         System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_SairActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Janela1 objJanela1 = new Janela1();
+        JanelaLogin1 objJanela1 = new JanelaLogin1();
         objJanela1.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed

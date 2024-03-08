@@ -15,9 +15,9 @@ import javax.swing.JOptionPane;
  */
 public class ConexaoDAO {
 
-    public Connection conectaBD(){
+    public static Connection conector(){
     
-        Connection coon = null;
+        Connection conexao = null;
         
         try {
             
@@ -32,7 +32,7 @@ public class ConexaoDAO {
         //-----------------------------------------------------------------------------------//
         
         
-        coon = DriverManager.getConnection(url);
+        conexao = DriverManager.getConnection(url);
         } 
            
         
@@ -42,7 +42,7 @@ public class ConexaoDAO {
             JOptionPane.showInternalMessageDialog(null, e.getMessage());
         }
         
-        return coon;  
+        return conexao;  
     }
 }
     

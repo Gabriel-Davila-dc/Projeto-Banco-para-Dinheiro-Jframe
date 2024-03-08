@@ -4,8 +4,11 @@
  */
 package Janelas;
 
-import DTO.ContaBancaria;
-import Janelas.Util.LimitaCaracteres;
+import DAO.ConexaoDAO;
+import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,19 +16,33 @@ import Janelas.Util.LimitaCaracteres;
  */
 public class Janela2 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Janela2
-     */
+    Connection conexao=null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    
+    String idSupremo;
     public Janela2() {
         initComponents();
-        }
-    
-    public void ExportarTexto(ContaBancaria objContaBancaria)
-    {
-        lblValor.setText(Double.toString(objContaBancaria.getSaldo()));
-    }
         
+        conexao = ConexaoDAO.conector();
        
+        }
+         
+    
+    public void informacoesPessoais(){
+    
+            String sql = "select * from usuario where id_numconta = ?";
+            try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, idSupremo);
+            rs = pst.executeQuery();
+            if(rs.next()){
+                lblValor.setText(rs.getString(4));}             
+        } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, e);
+
+        }
+    }
     
 
     /**
@@ -51,6 +68,11 @@ public class Janela2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(71, 71, 71));
@@ -91,7 +113,7 @@ public class Janela2 extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSairDaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -100,9 +122,9 @@ public class Janela2 extends javax.swing.JFrame {
                     .addComponent(Sair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36))))
+                        .addGap(50, 50, 50))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,22 +212,33 @@ public class Janela2 extends javax.swing.JFrame {
 
     private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
         // TODO add your handling code here:
-        Principal.paginaAberta(4);
+        JanelaDepositar4 objJanelaDepositar = new JanelaDepositar4();
+        objJanelaDepositar.setVisible(true);
+        objJanelaDepositar.idSupremoD = idSupremo;
         dispose();
             
     }//GEN-LAST:event_btnDepositarActionPerformed
 
     private void btnSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarActionPerformed
         // TODO add your handling code here:
-        Principal.paginaAberta(5);
+        JanelaSacar5 objJanelaSacar = new JanelaSacar5();
+        objJanelaSacar.setVisible(true);
+        objJanelaSacar.idSupremoS = idSupremo;
         dispose();
     }//GEN-LAST:event_btnSacarActionPerformed
 
     private void btnSairDaContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairDaContaActionPerformed
         // TODO add your handling code here:
-        Principal.paginaAberta(1);
+        JanelaLogin1 objJanleaLogin = new JanelaLogin1();
+        objJanleaLogin.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSairDaContaActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // usado para atualizar a Janela automaticamente
+        informacoesPessoais();
+
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

@@ -4,26 +4,61 @@
  */
 package Janelas;
 
-import DAO.UsuarioDAO;
-import DTO.ContaBancaria;
+import java.sql.*;
+import DAO.ConexaoDAO;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author gabri
  */
-public class Janela1 extends javax.swing.JFrame {
+public class JanelaLogin1 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Janela1
-     */
-    public Janela1() {
+          Connection conexao = null;
+          PreparedStatement pst = null;
+          ResultSet rs = null;
+    
+    
+    public JanelaLogin1() {
         initComponents();
         painelUsuarioSenhaErrado.setVisible(false);
+        
+       conexao = ConexaoDAO.conector();
     }
 
+    
+    public void logar(){
+        try {
+            String sql = "select * from usuario where nome =? and senha =?";
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, txtUsuario.getText());
+            String senhaCodificada = new String(txtSenha.getPassword());
+            pst.setString(2, senhaCodificada);
+            
+            rs = pst.executeQuery();
+            
+          
+            if (rs.next())
+            {
+                 //a linha abaixo obtem o campo perfil 
+                String id = rs.getString(1);
+                System.out.println(id);
+                
+            Janela2 objJanela2 = new Janela2();
+            objJanela2.setVisible(true);
+            objJanela2.idSupremo = id;
+            
+            }
+            else{painelUsuarioSenhaErrado.setVisible(true);}
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,16 +76,15 @@ public class Janela1 extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtSenha = new javax.swing.JTextField();
         btnEntrar = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
         painelUsuarioSenhaErrado = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(470, 400));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(484, 440));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -91,10 +125,6 @@ public class Janela1 extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Senha:");
-
-        txtSenha.setBackground(new java.awt.Color(51, 51, 51));
-        txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtSenha.setForeground(new java.awt.Color(255, 255, 255));
 
         btnEntrar.setBackground(new java.awt.Color(67, 67, 67));
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -140,6 +170,10 @@ public class Janela1 extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
+        txtSenha.setBackground(new java.awt.Color(51, 51, 51));
+        txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtSenha.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -151,19 +185,18 @@ public class Janela1 extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
-                            .addComponent(painelUsuarioSenhaErrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(painelUsuarioSenhaErrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(81, 81, 81)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -175,9 +208,9 @@ public class Janela1 extends javax.swing.JFrame {
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
                 .addComponent(painelUsuarioSenhaErrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -195,28 +228,13 @@ public class Janela1 extends javax.swing.JFrame {
     
     
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        // TODO add your handling code here:
-        
-        String usuarioT = txtUsuario.getText();
-        String senhaT = txtSenha.getText();
-
-        boolean logar = Principal.logar(usuarioT, senhaT);
-             
-        if(logar == true)
-        {
-            Principal.paginaAberta(2);
-           
-                 
-        }else
-        {
-            painelUsuarioSenhaErrado.setVisible(true);
-        }
-   
+        logar();
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
-        Principal.paginaAberta(3);
+       JanelaCadastrar3 objjanelaCadastrar = new JanelaCadastrar3();
+       objjanelaCadastrar.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
@@ -242,20 +260,23 @@ public class Janela1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Janela1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Janela1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Janela1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Janela1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Janela1().setVisible(true);
+                new JanelaLogin1().setVisible(true);
             }
         });
     }
@@ -272,7 +293,7 @@ public class Janela1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel painelUsuarioSenhaErrado;
-    private javax.swing.JTextField txtSenha;
+    private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

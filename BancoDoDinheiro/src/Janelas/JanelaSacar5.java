@@ -12,6 +12,8 @@ import Janelas.Util.LimitaCaracteres;
  */
 public class JanelaSacar5 extends javax.swing.JFrame {
 
+    String idSupremoS;
+
     /**
      * Creates new form Janela2
      */
@@ -20,6 +22,8 @@ public class JanelaSacar5 extends javax.swing.JFrame {
         txtValor.setDocument(new LimitaCaracteres(17, LimitaCaracteres.TipoEntrada.NUMERODECIMAL));
 
     }
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,7 +121,9 @@ public class JanelaSacar5 extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
-        Principal.paginaAberta(2);
+         Janela2 objJanela2 = new Janela2();
+            objJanela2.setVisible(true);
+            objJanela2.idSupremo = idSupremoS;
             dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
