@@ -1,8 +1,7 @@
 ## Resumo
   
   O objetivo é a criação de um Banco, com as suas funções mais objetivas: Sacar, depositar e ver o status da conta.         
-	  Estou usando JAVA e MySQL, porque são as ferramentas que estou estudando no momento.         
-	  Os Objetos (DTO) já estão criados, com funções como: Depositar, sacar, cheque especial e conta poupança.         
+	  Estou usando JAVA e MySQL, porque são as ferramentas que estou estudando no momento.               
 	Usando o Jframe (VIEW), customizei um frame para cada situação, "login", "cadastrar", "tela principal", "sacar" e "depositar".           
 	Logar e Cadastrar funcionando. Estou hospedando os dados no meu PC, então mude as configurações de DAO do projeto, para seu própio bancode dados(MySQL), caso queira testar.
 

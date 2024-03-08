@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Janelas;
 
 import DAO.ConexaoDAO;
@@ -23,6 +20,16 @@ public class Janela2 extends javax.swing.JFrame {
     String idSupremo;
     public Janela2() {
         initComponents();
+<<<<<<< HEAD
+=======
+       
+        }
+    
+    public void ExportarTexto(ContaBancaria objContaBancaria)
+    {
+        lblValor.setText(Double.toString(objContaBancaria.getSaldo()));
+    }
+>>>>>>> 5debe9bdf8fe76c9ca4b1bef32262e9662a00818
         
         conexao = ConexaoDAO.conector();
        
