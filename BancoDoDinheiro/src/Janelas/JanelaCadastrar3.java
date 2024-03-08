@@ -37,11 +37,12 @@ public class JanelaCadastrar3 extends javax.swing.JFrame {
                 PainelCadastroInvalido.setVisible(true);
             } else {
 
-                String sql2 = "insert into usuario(nome, senha) values (?,?)";
+                String sql2 = "insert into usuario(nome, senha, saldo) values (?,?,?)";
                 try {
                     pst = conexao.prepareStatement(sql2);
                     pst.setString(1, txtUsuario.getText());
                     pst.setString(2, txtSenha.getText());
+                     pst.setString(1, "0.00");
                     if (txtUsuario.getText().isEmpty() || txtSenha.getText().isEmpty()) {
                         PainelCadastroInvalido.setVisible(true);
                     } else {
@@ -100,9 +101,9 @@ public class JanelaCadastrar3 extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 70, -1));
         jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 220, 30));
 
-        btnCadastrar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCadastrar.setBackground(new java.awt.Color(32, 51, 105));
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
