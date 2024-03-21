@@ -4,13 +4,22 @@
  */
 package Janelas;
 
+import DAO.ConexaoDAO;
 import Janelas.Util.LimitaCaracteres;
+import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author gabri
  */
 public class JanelaSacar5 extends javax.swing.JFrame {
+
+    Connection conexao = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
 
     String idSupremoS;
 
@@ -20,10 +29,53 @@ public class JanelaSacar5 extends javax.swing.JFrame {
     public JanelaSacar5() {
         initComponents();
         txtValor.setDocument(new LimitaCaracteres(17, LimitaCaracteres.TipoEntrada.NUMERODECIMAL));
+        lblInsuficiente.setVisible(false);
+        
+        conexao = ConexaoDAO.conector();
 
     }
-    
-   
+
+    public void Sacar() {
+
+        String sql = "select * from usuario where id_numconta = " + idSupremoS + "";
+        try {
+            pst = conexao.prepareStatement(sql);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                double saldo = Double.parseDouble(rs.getString(4));
+                double saque = Double.parseDouble(txtValor.getText().replace(",", "."));
+
+                if (saque < saldo) {
+                    double NovoValor = saldo - saque;
+                    System.out.println("valor" + NovoValor);
+
+                    String sql2 = "update usuario set saldo = ? where id_numconta = ?";
+                    try {
+                        pst = conexao.prepareStatement(sql2);
+                        pst.setString(2, idSupremoS);
+                        pst.setString(1, Double.toString(NovoValor));
+
+                        if (!txtValor.getText().isEmpty()) {
+                            pst.executeUpdate();
+                        }
+
+                        Janela2 objJanela2 = new Janela2();
+                        objJanela2.setVisible(true);
+                        objJanela2.idSupremo = idSupremoS;
+                        dispose();
+
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "sacar" + e);
+                    }
+                }
+                else{lblInsuficiente.setVisible(true);}
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ver dinheiro na conta" + e);
+        }
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,6 +93,7 @@ public class JanelaSacar5 extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
         txtValor = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        lblInsuficiente = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,8 +104,8 @@ public class JanelaSacar5 extends javax.swing.JFrame {
         jPanel3.setForeground(new java.awt.Color(102, 102, 102));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSacanar.setBackground(new java.awt.Color(40, 38, 38));
-        btnSacanar.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        btnSacanar.setBackground(new java.awt.Color(94, 186, 255));
+        btnSacanar.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnSacanar.setForeground(new java.awt.Color(255, 255, 255));
         btnSacanar.setText("Sacar");
         btnSacanar.addActionListener(new java.awt.event.ActionListener() {
@@ -60,7 +113,7 @@ public class JanelaSacar5 extends javax.swing.JFrame {
                 btnSacanarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnSacanar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 352, 47));
+        jPanel3.add(btnSacanar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 352, 70));
 
         btnSair.setBackground(new java.awt.Color(41, 41, 41));
         btnSair.setForeground(new java.awt.Color(204, 204, 204));
@@ -104,6 +157,12 @@ public class JanelaSacar5 extends javax.swing.JFrame {
         jLabel1.setText("R$:");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 80, 88));
 
+        lblInsuficiente.setBackground(new java.awt.Color(153, 0, 0));
+        lblInsuficiente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblInsuficiente.setForeground(new java.awt.Color(153, 0, 0));
+        lblInsuficiente.setText("Saldo insuficiente");
+        jPanel3.add(lblInsuficiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 320, -1));
+
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 600, 410));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/azulFolha.jpg"))); // NOI18N
@@ -116,23 +175,23 @@ public class JanelaSacar5 extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
-         System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
-         Janela2 objJanela2 = new Janela2();
-            objJanela2.setVisible(true);
-            objJanela2.idSupremo = idSupremoS;
-            dispose();
+        Janela2 objJanela2 = new Janela2();
+        objJanela2.setVisible(true);
+        objJanela2.idSupremo = idSupremoS;
+        dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnSacanarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacanarActionPerformed
-        // TODO add your handling code here:
-        String valor = txtValor.getText();
-        
-        
-        
+        if (!txtValor.getText().isEmpty()) {
+            Sacar();
+        }
+
+
     }//GEN-LAST:event_btnSacanarActionPerformed
 
     private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
@@ -189,6 +248,7 @@ public class JanelaSacar5 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblInsuficiente;
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }

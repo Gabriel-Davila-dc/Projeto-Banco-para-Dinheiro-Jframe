@@ -42,7 +42,7 @@ public class LimitaCaracteres extends PlainDocument {
       String regex = "";
       
         switch (tpEntrada) {
-            case NUMERODECIMAL: regex = "[^0-9,.]"; break;
+            case NUMERODECIMAL: regex = "[^0-9,]"; break;
         }
         
         str = str.replaceAll(regex, "");
